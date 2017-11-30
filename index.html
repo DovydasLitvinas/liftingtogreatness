@@ -9,16 +9,6 @@
   <link rel="stylesheet" href="bootstrap-social-gh-pages/bootstrap-social.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="instafeed.min.js"></script>
-
-  <script type="text/javascript">
-    var feed = new Instafeed({
-        get: 'tagged',
-        tagName: 'awesome',
-        clientId: 'YOUR_CLIENT_ID'
-    });
-    feed.run();
-</script>
   <style>
 
   /* Remove the navbar's default margin-bottom and rounded borders */
@@ -53,8 +43,9 @@
     /*-------------------------------------------------*
     /* Add a gray background color and some padding to the footer */
     footer {
+      margin-top: 20px;
+      box-shadow: inset 0 1px 10px #000000;
       background-color: #565656;
-      opacity: 0.5;
       padding: 25px;
     }
   .carousel-inner img {
@@ -201,6 +192,11 @@
 /* Large desktop */
 }
 
+.follow_me {
+  margin-left: 10%;
+  margin-top: 1%;
+  color: #cdcdcd;
+}
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {  }
 
@@ -252,11 +248,11 @@
   <div class="container-fluid header_grey">
     <ul class="left-menu">
       <li class="left_menu_item"><a id="ltg_title" href="index.html"><img src="images/ltg_logo.png" alt="Image" class="img-responsive left_menu_item" id="ltg_title"></a></li>
-      <li class="active left_menu_item"><a href="#home">Pagrindinis</a></li>
-      <li class="left_menu_item"><a class="left_menu_item" href="#news">Apie</a></li>
+      <li class="active left_menu_item"><a href="#index">Pagrindinis</a></li>
+      <li class="left_menu_item"><a href="#paslaugos">Paslaugos</a></li>
       <li class="left_menu_item"><a class="left_menu_item" href="http://facebook.com/liftingtogreatness">Straipsniai</a></li>
-      <li class="left_menu_item"><a class="left_menu_item" href="#about">Planai</a></li>
-      <li class="left_menu_item"><a class="left_menu_item" href="#about">Kontaktai</a></li>
+      <li class="left_menu_item"><a class="left_menu_item" href="#kontaktai">Kontaktai</a></li>
+      <li class="left_menu_item"><a class="left_menu_item" href="#apie">Apie</a></li>
     </ul>
     <ul class="right-menu">
       <div class="dropdown">
@@ -272,10 +268,10 @@
   </div>
 </div>
 
-<div class="container text-center">
-  <h3 id="insta_text">Instagram</h3><br>
+<div class="container text-center instagram">
+  <h3 id="insta_text">Instagram feed naujienos</h3>
   <div id="instafeed"></div>
-</div><br>
+</div>
 <div class="container text-center" id="social_box">
     <div class="row" id="social_icons">
       <a href="http://facebook.com/liftingtogreatness" class="btn btn-social-icon btn-facebook">
@@ -291,23 +287,46 @@
 </div>
 
 <footer class="container-fluid">
-<div class="follow_me"> Follow me: <p>
-  <a href="http://facebook.com/liftingtogreatness" class="btn btn-social-icon btn-facebook">
-    <span class="fa fa-facebook"></span>
-  </a>
-  <a href="http://instagram.com/le.dovis" class="btn btn-social-icon btn-instagram">
-    <span class="fa fa-instagram"></span>
-  </a>
-  <a class="btn btn-social-icon btn-twitter">
-    <span class="fa fa-twitter"></span>
-  </a>
+<div class="row">
+  <div class="col-sm-6 follow_me">
+    <div class="col-sm-12">
+      <b> Mane galite sekti: </b><br>
+      <a href="http://facebook.com/liftingtogreatness" class="btn btn-social-icon btn-facebook">
+        <span class="fa fa-facebook"></span>
+      </a>
+      <a href="http://instagram.com/le.dovis" class="btn btn-social-icon btn-instagram">
+        <span class="fa fa-instagram"></span>
+      </a>
+      <a class="btn btn-social-icon btn-twitter">
+        <span class="fa fa-twitter"></span>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-6">
+  </div>
 </div>
-</menu>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <b>"Lifting to Greatness" @ Visos teisės saugomos, 2017<b><br>
+      <b>Svetainę sukūrė - Dovydas Litvinas</b>
+  </div>
+</div>
 </footer>
 </body>
-
+<script type="text/javascript" src="instafeed.min.js"></script>
+<script type="text/javascript">
+  var userFeed = new Instafeed({
+      get: 'user',
+      userId: '286388958',
+      accessToken: '286388958.1677ed0.1e9ebce87e0d4e00ae60aa57a0564a78',
+      limit: '4',
+      resolution: 'low_resolution',
+      template:
+      '<div class="col-sm-3"><a href="{{link}}"><img src="{{image}}"/></a></div>'
+  });
+  userFeed.run();
+</script>
 <script language="javascript">
-
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
