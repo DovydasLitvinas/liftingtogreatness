@@ -13,8 +13,8 @@
 
   /* Remove the navbar's default margin-bottom and rounded borders */
 
-    /*social media stuff*/
-    @media (min-width: 1200px) {
+    /*social media stuff
+    @media (min-width: 1200px) {*/
     @font-face {
         font-family: instagram;
         src: url(Billabong.ttf);
@@ -140,7 +140,7 @@
     max-height: 10%;
   }
 
-  .dropbtn {
+.dropbtn {
     background-color: none;
     color: white;
     padding: 16px;
@@ -188,26 +188,79 @@
   margin-top: 35px;
 }
 
-.show {display:block;}
-/* Large desktop */
-}
-
 .follow_me {
-  margin-left: 10%;
   margin-top: 1%;
+  margin-bottom: 1%;
   color: #cdcdcd;
 }
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {  }
 
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {  }
+.atsiskaitymas {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  color: #cdcdcd;
+}
+.contact_info {
+  margin-left: 2%;
+  color: #cdcdcd;
+}
+Portrait tablet to landscape and desktop
+@media (min-width: 768px) and (max-width: 995px) {
 
-/* Landscape phones and down */
-@media (max-width: 480px) {  }
+}
+Landscape phone to portrait tablet
+@media (max-width: 767px) {
 
-  /* 1451×644 naikinti meniu */
-  </style>
+}
+
+Landscape phones and down
+@media (max-width: 480px) {
+
+}
+
+/*******************************/
+/*          MOBILE CSS         */
+/*******************************/
+.dropbtn-mobile {
+    background-color: none;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    padding-top: 5%;
+}
+
+.dropbtn-mobile:hover, .dropbtn-mobile:focus {
+    background-color: #3e8e41;
+}
+
+
+.dropdown-content-mobile {
+    display: none;
+    position: fixed;
+    background-color: #3A3A3A;
+    opacity: 0.8;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: 10%;
+}
+
+.header span {
+    color: white;
+    text-decoration: none;
+    display: block;
+    right: 0;
+    float: right;
+}
+
+.dropdown-mobile a:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+/*******************************/
+/*******************************/
+/*******************************/
+</style>
 </head>
 <body>
 <!---->
@@ -242,9 +295,11 @@
       <span class="sr-only">Next</span>
     </a>-->
 </div>
-<!--<div class="header_info">Kontaktai:<a id="mailto" href="mailto:info@liftingtogreatness.com"> info@liftingtogreatness.com</a>-->
+<!---------------------------------------------------------------------------------->
+<!--                           Menu for desktops                                  -->
+<!---------------------------------------------------------------------------------->
 <div class="menu_bg"></div>
-<div class="header menu">
+<div class="header menu hidden-xs hidden-sm">
   <div class="container-fluid header_grey">
     <ul class="left-menu">
       <li class="left_menu_item"><a id="ltg_title" href="index.html"><img src="images/ltg_logo.png" alt="Image" class="img-responsive left_menu_item" id="ltg_title"></a></li>
@@ -268,6 +323,26 @@
   </div>
 </div>
 
+<!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!--                           Menu for mobiles and tablets                       -->
+<!---------------------------------------------------------------------------------->
+<div class="header menu col-xs-12 col-sm-12 hidden-lg hidden-xl hidden-md">
+  <span onclick="mobileDropdown()" class="dropbtn-mobile glyphicon glyphicon-menu-hamburger"></span>
+  <div id="myDropdown-mobile" class="dropdown-content-mobile">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+
+<!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------->
+
 <div class="container text-center instagram">
   <h3 id="insta_text">Instagram feed naujienos</h3>
   <div id="instafeed"></div>
@@ -288,8 +363,12 @@
 
 <footer class="container-fluid">
 <div class="row">
-  <div class="col-sm-6 follow_me">
-    <div class="col-sm-12">
+  <div class="col-sm-6 col-xs-12 text-center">
+    <div class="row contact_info">
+      Asmeninis certifikuotas treneris - Dovydas Litvinas, <br>
+      <b> +37061221415, dovydas.litvinas@gmail.com </b><br><br>
+    </div>
+    <div class="col-sm-12 center-text contact_info">
       <b> Mane galite sekti: </b><br>
       <a href="http://facebook.com/liftingtogreatness" class="btn btn-social-icon btn-facebook">
         <span class="fa fa-facebook"></span>
@@ -302,11 +381,17 @@
       </a>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 col-xs-12 atsiskaitymas">
+    <br>
+    <b> Atsiskaitymo būdai:</b>
+    <div class="row">
+      <img src="images/banks.png"></img>
+    </div>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12 text-center">
+    <br>
     <b>"Lifting to Greatness" @ Visos teisės saugomos, 2017<b><br>
       <b>Svetainę sukūrė - Dovydas Litvinas</b>
   </div>
@@ -327,8 +412,9 @@
   userFeed.run();
 </script>
 <script language="javascript">
+
 function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown-mobile").classList.toggle("show");
 }
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
@@ -343,8 +429,21 @@ window.onclick = function(event) {
     }
   }
 }
-function change_page_apie(){
-  window.location.href = "apie.html";
+function mobileDropdown() {
+    document.getElementById("myDropdown-mobile").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn-mobile')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content-mobile");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
 </script>
 </html>
