@@ -116,7 +116,7 @@
     float: right;
     overflow: hidden;
   }
-  .left-menu .left_menu_item:hover, .right-menu .right_menu_item:hover {
+  .left-menu .left_menu_item:hover, .right-menu .right_menu_item:hover, .dropbtn-mobile:hover, .dropbtn-mobile:focus  {
       background-color: #ddd;
       color: black;
       border-radius: 5px;
@@ -126,20 +126,6 @@
     text-decoration: none;
   }
 
-  .menu_bg {
-    top: 0;
-    background-color: #565656;
-    opacity: 0.5;
-    width: 100%;
-    display: block;
-    position: fixed;
-    font-weight: bold;
-    font-family: 'ltg_menu';
-    font-size: 20px;
-    height: 10%;
-    max-height: 10%;
-  }
-
 .dropbtn {
     background-color: none;
     color: white;
@@ -147,10 +133,6 @@
     font-size: 16px;
     border: none;
     cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
 }
 
 .dropdown {
@@ -165,23 +147,12 @@
     position: fixed;
     background-color: #3A3A3A;
     opacity: 0.8;
-    min-width: 160px;
+    min-width: 140px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 0px 0px 5px 5px;
     top: 10%;
     right: 0;
-}
-
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown a:hover {
-  background-color: #f1f1f1;
-  color: black;
 }
 
 .glyphicon.glyphicon-user{
@@ -200,23 +171,24 @@
   color: #cdcdcd;
 }
 .contact_info {
+	margin-top: 5%;
   margin-left: 2%;
   color: #cdcdcd;
 }
-Portrait tablet to landscape and desktop
-@media (min-width: 768px) and (max-width: 995px) {
 
-}
-Landscape phone to portrait tablet
-@media (max-width: 767px) {
-
-}
-
-Landscape phones and down
-@media (max-width: 480px) {
-
-}
-
+ .menu_bg {
+    top: 0;
+    background-color: #565656;
+    opacity: 0.5;
+    width: 100%;
+    display: block;
+    position: fixed;
+    font-weight: bold;
+    font-family: 'ltg_menu';
+    font-size: 20px;
+    min-height: 90px;
+    max-height: 90px;
+  }
 /*******************************/
 /*          MOBILE CSS         */
 /*******************************/
@@ -226,23 +198,22 @@ Landscape phones and down
     font-size: 16px;
     border: none;
     cursor: pointer;
-    padding-top: 5%;
+    margin-top: 5%;
+    height: 19px;
 }
-
-.dropbtn-mobile:hover, .dropbtn-mobile:focus {
-    background-color: #3e8e41;
-}
-
 
 .dropdown-content-mobile {
     display: none;
-    position: fixed;
+    position: absolute;
     background-color: #3A3A3A;
     opacity: 0.8;
-    min-width: 160px;
+    min-width: 100px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    top: 10%;
+    border-radius: 0px 0px 5px 5px;
+    margin-top: 90px;
+    float: right;
+    right: 0;
 }
 
 .header span {
@@ -257,12 +228,16 @@ Landscape phones and down
   background-color: #f1f1f1;
   color: black;
 }
+
+.insta_img {
+	position: static;
+}
 /*******************************/
 /*******************************/
 /*******************************/
 </style>
 </head>
-<body>
+<body onclick="dropdownClose()">
 <!---->
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -299,29 +274,6 @@ Landscape phones and down
 <!--                           Menu for desktops                                  -->
 <!---------------------------------------------------------------------------------->
 <div class="menu_bg"></div>
-<div class="header menu hidden-xs hidden-sm">
-  <div class="container-fluid header_grey">
-    <ul class="left-menu">
-      <li class="left_menu_item"><a id="ltg_title" href="index.html"><img src="images/ltg_logo.png" alt="Image" class="img-responsive left_menu_item" id="ltg_title"></a></li>
-      <li class="active left_menu_item"><a href="#index">Pagrindinis</a></li>
-      <li class="left_menu_item"><a href="#paslaugos">Paslaugos</a></li>
-      <li class="left_menu_item"><a class="left_menu_item" href="http://facebook.com/liftingtogreatness">Straipsniai</a></li>
-      <li class="left_menu_item"><a class="left_menu_item" href="#kontaktai">Kontaktai</a></li>
-      <li class="left_menu_item"><a class="left_menu_item" href="#apie">Apie</a></li>
-    </ul>
-    <ul class="right-menu">
-      <div class="dropdown">
-        <a onclick="myFunction()" class="dropbtn glyphicon glyphicon-menu-hamburger right_menu_item"></a>
-          <div id="myDropdown" class="dropdown-content">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
-      </div>
-      <a class="glyphicon glyphicon-user right_menu_item"></a>
-    </ul>
-  </div>
-</div>
 
 <!---------------------------------------------------------------------------------->
 <!---------------------------------------------------------------------------------->
@@ -330,11 +282,14 @@ Landscape phones and down
 <!--                           Menu for mobiles and tablets                       -->
 <!---------------------------------------------------------------------------------->
 <div class="header menu col-xs-12 col-sm-12 hidden-lg hidden-xl hidden-md">
+<li class="left_menu_item"><a id="ltg_title" href="index.html"><img src="images/ltg_logo.png" alt="Image" class="img-responsive left_menu_item" id="ltg_title"></a></li>
   <span onclick="mobileDropdown()" class="dropbtn-mobile glyphicon glyphicon-menu-hamburger"></span>
   <div id="myDropdown-mobile" class="dropdown-content-mobile">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+  	<a href="#index">Pagrindinis</a>
+    <a href="http://facebook.com/liftingtogreatness">Paslaugos</a>
+    <a href="#">Straipsniai</a>
+    <a href="#">Kontaktai</a>
+    <a href="#">Apie</a>
   </div>
 </div>
 
@@ -347,23 +302,11 @@ Landscape phones and down
   <h3 id="insta_text">Instagram feed naujienos</h3>
   <div id="instafeed"></div>
 </div>
-<div class="container text-center" id="social_box">
-    <div class="row" id="social_icons">
-      <a href="http://facebook.com/liftingtogreatness" class="btn btn-social-icon btn-facebook">
-        <span class="fa fa-facebook"></span>
-      </a>
-      <a href="http://instagram.com/le.dovis" class="btn btn-social-icon btn-instagram">
-        <span class="fa fa-instagram"></span>
-      </a>
-      <a class="btn btn-social-icon btn-twitter">
-        <span class="fa fa-twitter"></span>
-      </a>
-    </div>
-</div>
+
 
 <footer class="container-fluid">
 <div class="row">
-  <div class="col-sm-6 col-xs-12 text-center">
+  <div class="col-sm-6 col-xs-12">
     <div class="row contact_info">
       Asmeninis certifikuotas treneris - Dovydas Litvinas, <br>
       <b> +37061221415, dovydas.litvinas@gmail.com </b><br><br>
@@ -397,6 +340,42 @@ Landscape phones and down
   </div>
 </div>
 </footer>
+<div class="header menu hidden-xs hidden-sm">
+  <div class="container-fluid header_grey">
+    <ul class="left-menu">
+      <li class="left_menu_item"><a id="ltg_title" href="index.html"><img src="images/ltg_logo.png" alt="Image" class="img-responsive left_menu_item" id="ltg_title"></a></li>
+      <li class="active left_menu_item"><a href="#index">Pagrindinis</a></li>
+      <li class="left_menu_item"><a href="#paslaugos">Paslaugos</a></li>
+      <li class="left_menu_item"><a class="left_menu_item" href="http://facebook.com/liftingtogreatness">Straipsniai</a></li>
+      <li class="left_menu_item"><a class="left_menu_item" href="#kontaktai">Kontaktai</a></li>
+      <li class="left_menu_item"><a class="left_menu_item" href="#apie">Apie</a></li>
+    </ul>
+    <ul class="right-menu">
+      <div class="dropdown">
+        <a onclick="desktopDropdown()" class="dropbtn glyphicon glyphicon-menu-hamburger right_menu_item"></a>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#home">Pagrindinis</a>
+            <a href="#about">Apie</a>
+            <a href="#contact">Kontaktai</a>
+          </div>
+      </div>
+      <a class="glyphicon glyphicon-user right_menu_item"></a>
+    </ul>
+  </div>
+</div>
+<div class="container text-center" id="social_box">
+    <div class="row" id="social_icons">
+      <a href="http://facebook.com/liftingtogreatness" class="btn btn-social-icon btn-facebook">
+        <span class="fa fa-facebook"></span>
+      </a>
+      <a href="http://instagram.com/le.dovis" class="btn btn-social-icon btn-instagram">
+        <span class="fa fa-instagram"></span>
+      </a>
+      <a class="btn btn-social-icon btn-twitter">
+        <span class="fa fa-twitter"></span>
+      </a>
+    </div>
+</div>
 </body>
 <script type="text/javascript" src="instafeed.min.js"></script>
 <script type="text/javascript">
@@ -407,15 +386,20 @@ Landscape phones and down
       limit: '4',
       resolution: 'low_resolution',
       template:
-      '<div class="col-sm-3"><a href="{{link}}"><img src="{{image}}"/></a></div>'
+      '<div class="col-sm-3 insta_img"><a href="{{link}}"><img src="{{image}}"/></a></div>'
   });
   userFeed.run();
 </script>
 <script language="javascript">
 
-function myFunction() {
-    document.getElementById("myDropdown-mobile").classList.toggle("show");
+function desktopDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
 }
+function dropdownClose() {
+	document.getElementById("myDropdown").classList.toggle("hide");
+}
+
+// Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
 
@@ -429,6 +413,7 @@ window.onclick = function(event) {
     }
   }
 }
+
 function mobileDropdown() {
     document.getElementById("myDropdown-mobile").classList.toggle("show");
 }
